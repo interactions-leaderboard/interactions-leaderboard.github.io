@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+        <meta charset=UTF-8>
+        <meta name=viewport content="width=device-width, initial-scale=1.0">
+        <link rel=icon href=assets/twitter.ico>
+        <title>Interactions Leaderboard</title>
+
+        <link rel=stylesheet href=style.css>
+        <script src=script.js defer></script>
+    </head>
+    <body>
+        <div class=screen>
+            <div class="options hidden">
+                <div class=amount>
+                    <span>The most recent</span>
+                    <input type=number></input>
+                    <span>/ <span class=max></span> tweets</span>
+                </div>
+                <div class=from>
+                    <span>From</span>
+                    <span>Followers</span>
+                    <div class=toggle>
+                        <input type=radio id=followers-x name=followers value=0>
+                        <label for=followers-x class=times><div class=icon></div></label>
+                        <input type=radio id=followers-- checked name=followers value=1>
+                        <label for=followers-- class=minus><div class=icon></div></label>
+                        <input type=radio id=followers-v name=followers value=2>
+                        <label for=followers-v class=check><div class=icon></div></label>
+                    </div>
+                    <span>Following</span>
+                    <div class=toggle>
+                        <input type=radio id=following-x name=following value=0>
+                        <label for=following-x class=times><div class=icon></div></label>
+                        <input type=radio id=following-- checked name=following value=1>
+                        <label for=following-- class=minus><div class=icon></div></label>
+                        <input type=radio id=following-v name=following value=2>
+                        <label for=following-v class=check><div class=icon></div></label>
+                    </div>
+                </div>
+                <div class=named>
+                    <span>Named</span>
+                    <input type=text></input>
+                </div>
+                <div class=sort>
+                    <span>By</span>
+                    <input type=radio id=order-asc name=order value=0>
+                    <label for=order-asc>Ascending</label>
+                    <input type=radio id=order-dsc checked name=order value=2>
+                    <label for=order-dsc>Descending</label>
+                    <select>
+                        <option value=0>Retweets</option>
+                        <option value=1>Likes</option>
+                        <option value=2 selected>Total</option>
+                    </select>
+                </div>
+            </div>
+            <div class=header>
+                <div class="icon settings"></div>
+                <div class="icon twitter"></div>
+                <div class="icon search"></div>
+            </div>
+            <div class="users hidden">
+                <div class=scroll>
+                    <div id=user class=user>
+                        <a href="https://twitter.com/">
+                            <img class=avatar></img>
+                            <div class=name>
+                                <span class=displayname></span>
+                                <span class=username></span>
+                            </div>
+                        </a>
+                        <div class=retweets>
+                            <span></span>
+                            <div class="icon retweet"></div>
+                        </div>
+                        <div class=likes>
+                            <span></span>
+                            <div class="icon like"></div>
+                        </div>
+                        <div class=total>
+                            <span></span>
+                            <div class="icon notification"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class=end>.</div>
+            </div>
+        </div>
+    </body>
+</html>

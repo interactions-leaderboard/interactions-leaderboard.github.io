@@ -1,0 +1,422 @@
+@font-face {
+    font-family: TwitterChirp;
+    src: url(/assets/chirp-regular.woff);
+}
+
+@font-face {
+    font-weight: bold;
+    font-family: TwitterChirp;
+    src: url(/assets/chirp-bold.woff);
+}
+
+html {
+    --font-size: 15px;
+    --line-height: 20px;
+    --background: rgb(0, 0, 0);
+    --foreground: rgb(217, 217, 217);
+    --border: rgb(47, 51, 54);
+    --thin: rgb(83, 100, 113);
+    --muted: rgb(124, 131, 139);
+    --red: rgb(249, 24, 128);
+    --green: rgb(0, 186, 124);
+    --blue: rgb(29, 155, 240);
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: var(--background);
+}
+
+* {
+    font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: var(--line-height);
+    font-size: var(--font-size);
+    color: var(--foreground);
+
+    box-sizing: border-box;
+    flex-shrink: 0;
+    flex-grow: 0;
+    padding: 0;
+    margin: 0;
+
+    -webkit-tap-highlight-color: transparent;
+    background-color: transparent;
+    user-select: none;
+    overflow: hidden;
+    outline: none;
+    border: none;
+}
+
+@media (hover: hover) {
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    * {
+        scrollbar-width: none;
+    }
+}
+
+input[type=radio] {
+    display: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
+
+/**/
+
+
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.screen {
+    height: 100%;
+    width: min(100%, 480px);
+    box-sizing: content-box;
+    border-width: 0 1px;
+    border-style: solid;
+    border-color: var(--border);
+    flex-direction: column;
+    display: flex;
+}
+
+.screen > .options {
+    width: 100%;
+    height: 218px;
+    padding: 1rem;
+    padding-bottom: 0;
+    flex-direction: column;
+    display: flex;
+    transition-duration: 0.2s;
+    transition-property: height, padding-top;
+}
+
+.screen > .options.hidden {
+    height: 0;
+    padding-top: 0;
+}
+
+.screen > .options > div {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+.screen > .options > div span:first-child {
+    color: var(--muted);
+    font-weight: initial;
+    white-space: nowrap;
+    margin-right: auto;
+    flex-shrink: 1;
+}
+
+.screen > .users {
+    height: 0;
+    width: 100%;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.screen > .users.hidden {
+    display: none;
+}
+
+
+
+/**/
+
+
+
+.amount span {
+    color: var(--muted);
+}
+
+.amount .max {
+    color: var(--foreground) !important;
+}
+
+.amount input {
+    width: 0;
+    flex-grow: 1;
+    padding: 0.5rem;
+    margin: 0 0.5rem;
+    border-radius: 100vh;
+    border: 1px solid var(--thin);
+    text-align: right;
+}
+
+
+
+
+/**/
+
+
+
+.from span {
+    flex-shrink: 1;
+    font-weight: bold;
+}
+
+.from .toggle {
+    padding: 0.25rem;
+    margin-left: 0.25rem;
+    display: flex;
+    border-radius: 100vh;
+    border: 1px solid var(--thin);
+}
+
+.from .toggle:first-of-type {
+    margin-right: 1rem;
+}
+
+.from .toggle label {
+    --size: 1rem;
+    padding: 0.25rem;
+    border-radius: 100vmax;
+}
+
+.from .toggle input[type=radio]:checked + .times {
+    background-color: var(--red);
+}
+
+.from .toggle input[type=radio]:checked + .minus {
+    background-color: var(--blue);
+}
+
+.from .toggle input[type=radio]:checked + .check {
+    background-color: var(--green);
+}
+
+
+
+/**/
+
+
+
+.named input {
+    width: 300px;
+    flex-shrink: 1;
+    padding: 0.5rem;
+    margin-left: 1rem;
+    border-radius: 100vh;
+    border: 1px solid var(--thin);
+}
+
+
+
+/**/
+
+
+
+.sort :is(label, select) {
+    padding: 0.5rem;
+    border-radius: 100vh;
+    border: 1px solid var(--thin);
+    background-color: var(--background);
+    font-weight: bold;
+    flex-shrink: 1;
+}
+
+.sort label {
+    height: 100%;
+    margin-right: 0.5rem;
+}
+
+.sort label:first-of-type {
+    margin-left: 0.5rem;
+}
+
+.sort input[type=radio]:not(:checked) + label {
+    background-color: var(--foreground);
+    color: var(--background);
+    border: none;
+}
+
+
+
+/**/
+
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+}
+
+.header .icon {
+    --size: 2rem;
+    box-sizing: content-box;
+    padding: 1rem;
+}
+
+
+
+/**/
+
+
+
+.user {
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid var(--border);
+}
+
+.user > a {
+    width: 40%;
+    padding: 1rem;
+    padding-right: 0;
+    text-decoration: none;
+    display: flex;
+}
+
+.user > a .avatar {
+    width: calc(var(--line-height) * 2);
+    height: calc(var(--line-height) * 2);
+    margin-right: 1rem;
+}
+
+.user > a .name {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 1;
+}
+
+.user > a .name span {
+    max-width: 100%;
+    text-overflow: ellipsis;
+}
+
+.user > a .username {
+    color: var(--muted);
+}
+
+.user > div {
+    width: 0;
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.user > div:last-of-type {
+    margin-right: 1.5rem;
+}
+
+.user > div .icon {
+    --size: var(--line-height);
+    margin-left: 0.5rem;
+}
+
+
+
+/**/
+
+
+
+.end {
+    width: 100%;
+    height: 64px;
+    padding-top: 1rem;
+    display: block;
+    line-height: 0;
+    font-weight: bold;
+    text-align: center;
+    color: var(--border);
+    font-size: var(--line-height);
+}
+
+
+
+/**/
+
+
+
+.settings {
+    --mask-image: url(/assets/settings.svg);
+    --color: var(--foreground);
+}
+
+.twitter {
+    --mask-image: url(/assets/twitter.svg);
+    --color: var(--blue);
+}
+
+.search {
+    --mask-image: url(/assets/search.svg);
+    --color: var(--foreground);
+}
+
+.times, .minus, .check {
+    --color: var(--muted);
+}
+
+input[type=radio]:checked + :is(.times, .minus, .check) {
+    --color: var(--foreground);
+}
+
+.times { --mask-image: url(/assets/times.svg); }
+.minus { --mask-image: url(/assets/minus.svg); }
+.check { --mask-image: url(/assets/check.svg); }
+
+.retweet {
+    --mask-image: url(/assets/retweeted.svg);
+    --color: var(--green);
+}
+
+.like {
+    --mask-image: url(/assets/liked.svg);
+    --color: var(--red);
+}
+
+.notification {
+    --mask-image: url(/assets/notified.svg);
+    --color: var(--foreground);
+}
+
+span:empty + .icon { --color: var(--muted); }
+span:empty + .retweet { --mask-image: url(/assets/retweet.svg); }
+span:empty + .like { --mask-image: url(/assets/like.svg); }
+span:empty + .notification { --mask-image: url(/assets/notification.svg); }
+
+.avatar {
+    border-radius: 100vmax;
+    background-color: var(--background);
+}
+
+.icon {
+    --mask-position: center;
+    --mask-repeat: no-repeat;
+    --mask-size: var(--size) var(--size);
+    background-color: var(--color);
+    height: var(--size);
+    width: var(--size);
+
+    mask-size: var(--mask-size);
+    mask-image: var(--mask-image);
+    mask-repeat: var(--mask-repeat);
+    mask-position: var(--mask-position);
+    -webkit-mask-size: var(--mask-size);
+    -webkit-mask-image: var(--mask-image);
+    -webkit-mask-repeat: var(--mask-repeat);
+    -webkit-mask-position: var(--mask-position);
+}
+
+.times, .minus, .check {
+    --mask-size: contain;
+}
