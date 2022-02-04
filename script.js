@@ -1,7 +1,10 @@
 window.addEventListener('load', () => {
-    document.querySelector('.search').addEventListener('click', () => search());
     document.querySelector('.settings').addEventListener('click', () => {
         document.querySelector('.options').classList.toggle('hidden');
+    })
+    document.querySelector('.search').addEventListener('click', () => {
+        document.querySelector('.options').classList.add('hidden');
+        search();
     })
 
     let href = document.querySelector('a').href;
@@ -14,6 +17,7 @@ window.addEventListener('load', () => {
         set('.retweets span', data.retweets);
         set('.total span', data.likes + data.retweets);
         if (data.avatar) el.querySelector('.avatar').src = data.avatar;
+        else el.querySelector('.avatar').removeAttribute('src');
         el.querySelector('a').href = href + data.username;
         return el;
     }))(document.querySelector('#user'));
@@ -56,7 +60,7 @@ window.addEventListener('load', () => {
             let height = users.scrollHeight - users.clientHeight;
             if (height - users.scrollTop < 100) chunk();
         }
-        chunk();
+        while (users.clientHeight > scroll.clientHeight) chunk();
         users.addEventListener('scroll', scrolled);
     }
 
@@ -68,9 +72,8 @@ window.addEventListener('load', () => {
         })
     })
 
-    let tweets = 1975;
+    let tweets = 3081;
     document.querySelector('.max').innerHTML = tweets;
     let input = document.querySelector('input[type=number]');
     input.placeholder = tweets;
-    input.value = tweets;
 })

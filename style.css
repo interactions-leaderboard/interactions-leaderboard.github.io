@@ -72,6 +72,10 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
+span {
+    white-space: nowrap;
+}
+
 
 
 /**/
@@ -99,8 +103,8 @@ body {
     height: 218px;
     padding: 1rem;
     padding-bottom: 0;
-    flex-direction: column;
     display: flex;
+    flex-direction: column;
     transition-duration: 0.2s;
     transition-property: height, padding-top;
 }
@@ -120,7 +124,6 @@ body {
 .screen > .options > div span:first-child {
     color: var(--muted);
     font-weight: initial;
-    white-space: nowrap;
     margin-right: auto;
     flex-shrink: 1;
 }
@@ -278,7 +281,8 @@ body {
 }
 
 .user > a {
-    width: 40%;
+    width: 0;
+    flex-grow: 1;
     padding: 1rem;
     padding-right: 0;
     text-decoration: none;
@@ -307,11 +311,17 @@ body {
 }
 
 .user > div {
-    width: 0;
-    flex-grow: 1;
+    width: 20%;
+    flex-shrink: 1;
     display: flex;
     justify-content: flex-end;
     align-items: center;
+}
+
+.user > div:first-of-type {
+    width: fit-content;
+    margin-left: 0.5rem;
+    flex-grow: 0;
 }
 
 .user > div:last-of-type {
