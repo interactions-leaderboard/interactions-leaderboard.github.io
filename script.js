@@ -60,7 +60,7 @@ window.addEventListener('load', () => {
             let height = users.scrollHeight - users.clientHeight;
             if (height - users.scrollTop < 100) chunk();
         }
-        while (users.clientHeight > scroll.clientHeight) chunk();
+        while (j < data.length && users.clientHeight > scroll.clientHeight) chunk();
         users.addEventListener('scroll', scrolled);
     }
 
